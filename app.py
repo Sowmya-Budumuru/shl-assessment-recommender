@@ -78,11 +78,11 @@ def recommend_api():
     results = recommend(query)
     return jsonify(results)
 
-port = int(os.environ.get("PORT", 5000))
+port = int(os.environ.get("PORT", 10000))
 
 if __name__ == '__main__':
     if not os.path.exists(DB_FILE):
         init_db()
         load_dummy_data()
     # port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port, debug=True)
+    app.run(host="0.0.0.0", port=port, debug=False)
