@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "Java Developer Test",
+        "description": "Test for Java developers",
+        "url": "https://shl.com/java-test",
+        "remote_support": "Yes",
+        "adaptive_support": "Yes",
+        "duration": "40 mins",
+        "test_type": "Technical"
+    },
+    {
+        "id": 2,
+        "name": "Python & SQL Test",
+        "description": "Covers Python, SQL, JavaScript",
+        "url": "https://shl.com/python-sql",
+        "remote_support": "Yes",
+        "adaptive_support": "No",
+        "duration": "60 mins",
+        "test_type": "Technical"
+    },
+    {
+        "id": 3,
+        "name": "Cognitive & Personality Test",
+        "description": "Cognitive and personality assessment",
+        "url": "https://shl.com/cognitive",
+        "remote_support": "Yes",
+        "adaptive_support": "Yes",
+        "duration": "45 mins",
+        "test_type": "Cognitive"
+    }
+]
