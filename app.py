@@ -67,7 +67,6 @@ def get_recommendations(query, top_n=10):
     return df.iloc[top_indices].to_dict(orient='records')
 
 @app.route('/recommend', methods=['POST'])
-@app.route('/recommend', methods=['POST'])
 def recommend_api():
     data = request.get_json()
     query = data.get('query', '')
@@ -84,5 +83,4 @@ if __name__ == '__main__':
     if not os.path.exists(DB_FILE):
         init_db()
         load_dummy_data()
-    # port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False)
