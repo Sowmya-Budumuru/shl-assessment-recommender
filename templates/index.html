@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SHL Assessment Recommender</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f4f4;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        textarea {
+            width: 90%;
+            max-width: 600px;
+            height: 120px;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            resize: vertical;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #0052cc;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #003d99;
+        }
+
+        table {
+            margin: 30px auto;
+            border-collapse: collapse;
+            width: 90%;
+            max-width: 1000px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px 18px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        a {
+            color: #0052cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>SHL Assessment Recommender 🧠📊</h1>
+    <form method="POST">
+        <textarea name="query" placeholder="Enter job description or requirement..." required></textarea><br>
+        <button type="submit">Recommend</button>
+    </form>
+
+    {% if results %}
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>URL</th>
+            <th>Duration</th>
+            <th>Test Type</th>
+            <th>Adaptive Support</th>
+            <th>Remote Support</th>
+        </tr>
+        {% for r in results %}
+        <tr>
+            <td>{{ r.name }}</td>
+            <td><a href="{{ r.url }}" target="_blank">{{ r.url }}</a></td>
+            <td>{{ r.duration }}</td>
+            <td>{{ r.test_type }}</td>
+            <td>{{ r.adaptive_support }}</td>
+            <td>{{ r.remote_support }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>
+

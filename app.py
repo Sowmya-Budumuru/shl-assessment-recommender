@@ -1,17 +1,22 @@
 import os
 import sqlite3
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+from recommand import recommend
 
 app = Flask(__name__)
+
 DB_FILE = "shl_assessments.db"
 
-@app.route('/')
+@app.route('/', methods=["GET", "POST"])
 def home():
-    print("Home route accessed")
-    return "Flask is running"
+    if request.method == "POST":
+        query = request.form["query"]
+        recommendations = get_recommendations(query)
+        return render_template("index.html", results=recommendations)
+    return render_template("index.html", results=None)
 
 # Initialize Database
 def init_db():
@@ -52,20 +57,7 @@ def get_recommendations(query, top_n=10):
     
     if df.empty:
         return []
-    
-    # ✅ If query contains "Technical", filter only Technical tests
-    if query.lower() == "technical":
-        df = df[df["test_type"].str.lower() == "technical"]
 
-    # ✅ If query contains "Cognitive", filter only Cognitive tests
-    if query.lower() == "cognitive":
-        df = df[df["test_type"].str.lower() == "cognitive"]
-
-    # If no data matches the filter
-    if df.empty:
-        return []
-
-    # Apply TF-IDF only on the filtered subset
     tfidf = TfidfVectorizer(stop_words='english')
     tfidf_matrix = tfidf.fit_transform(df['description'])
     query_vector = tfidf.transform([query])
@@ -74,18 +66,17 @@ def get_recommendations(query, top_n=10):
     
     return df.iloc[top_indices].to_dict(orient='records')
 
-
-
 @app.route('/recommend', methods=['POST'])
-def recommend():
-    data = request.json
+@app.route('/recommend', methods=['POST'])
+def recommend_api():
+    data = request.get_json()
     query = data.get('query', '')
     
     if not query:
         return jsonify({"error": "Query cannot be empty"}), 400
-    
-    recommendations = get_recommendations(query)
-    return jsonify(recommendations)
+
+    results = recommend(query)
+    return jsonify(results)
 
 if __name__ == '__main__':
     if not os.path.exists(DB_FILE):
@@ -93,4 +84,3 @@ if __name__ == '__main__':
         load_dummy_data()
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)
-
