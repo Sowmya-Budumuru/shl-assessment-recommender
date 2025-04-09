@@ -1,32 +1,39 @@
 [
     {
-        "id": 1,
-        "name": "Java Developer Test",
-        "description": "Test for Java developers",
-        "url": "https://shl.com/java-test",
-        "remote_support": "Yes",
-        "adaptive_support": "Yes",
-        "duration": "40 mins",
-        "test_type": "Technical"
+      "name": "Java Developer Test",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/java-developer-test/",
+      "remote_support": "Yes",
+      "adaptive_support": "Yes",
+      "duration": "40 mins",
+      "test_type": "Technical, Collaboration",
+      "description": "Assessment for Java developers including collaborative and communication skills."
     },
     {
-        "id": 2,
-        "name": "Python & SQL Test",
-        "description": "Covers Python, SQL, JavaScript",
-        "url": "https://shl.com/python-sql",
-        "remote_support": "Yes",
-        "adaptive_support": "No",
-        "duration": "60 mins",
-        "test_type": "Technical"
+      "name": "Python, SQL & JavaScript Test",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/python-sql-test/",
+      "remote_support": "Yes",
+      "adaptive_support": "No",
+      "duration": "60 mins",
+      "test_type": "Technical",
+      "description": "Comprehensive assessment covering Python, SQL, and JavaScript."
     },
     {
-        "id": 3,
-        "name": "Cognitive & Personality Test",
-        "description": "Cognitive and personality assessment",
-        "url": "https://shl.com/cognitive",
-        "remote_support": "Yes",
-        "adaptive_support": "Yes",
-        "duration": "45 mins",
-        "test_type": "Cognitive"
+      "name": "Cognitive & Personality Test",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/cognitive-personality-assessment/",
+      "remote_support": "Yes",
+      "adaptive_support": "Yes",
+      "duration": "45 mins",
+      "test_type": "Cognitive, Personality & Behaviour",
+      "description": "Cognitive and personality assessment for analyst roles and decision-making roles."
+    },
+    {
+      "name": "Quick Screening Test",
+      "url": "https://www.shl.com/solutions/products/product-catalog/view/quick-screening/",
+      "remote_support": "Yes",
+      "adaptive_support": "No",
+      "duration": "25 mins",
+      "test_type": "General Aptitude",
+      "description": "Short test designed for initial screening of applicants."
     }
-]
+  ]
+  
