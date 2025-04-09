@@ -75,7 +75,25 @@ def recommend_api():
         return jsonify({"error": "Query cannot be empty"}), 400
 
     results = recommend(query)
-    return jsonify(results)
+    formatted = []
+
+    for item in results:
+        formatted.append({
+            "url": item["url"],
+            "adaptive_support": item["adaptive_support"],
+            "description": item["description"],
+            "duration": int(item["duration"].split()[0]),  # assuming "60 mins"
+            "remote_support": item["remote_support"],
+            "test_type": [t.strip() for t in item["test_type"].split(",")]
+        })
+
+    return jsonify({"recommended_assessments": formatted}), 200
+
+
+
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "healthy"}), 200
 
 port = int(os.environ.get("PORT", 10000))
 
